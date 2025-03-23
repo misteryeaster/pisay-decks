@@ -1,16 +1,31 @@
-# pisay_decks
 
-A new Flutter project.
+# PisayDecks
 
-## Getting Started
+PisayDecks is a school-exclusive flashcard app designed for students of Philippine Science High School (Pisay). It allows students to create, customize, and share flashcards while tracking their progress and competing on a leaderboard.
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- School-Exclusive Access: Only users with a @pisay.edu.ph email can register.
+- Flashcard Management: Create, edit, and share subject-specific flashcards.
+- Study Modes: Practice with spaced repetition and quizzes.
+- Leaderboard: Track your progress and compete with classmates.
+- Progress Tracking: Monitor your learning journey.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Roadmap
+
+- [ ] Implement Email Authentication for Pisay Accounts
+- [ ] Develop Flashcard Creation and Management Features
+- [ ] Create Study Modes (e.g., Practice Mode, Quiz Mode)
+- [ ] Add Leaderboard for User Progress
+- [ ] Implement User Profile and Progress Tracking
+- [ ] Add Changelog for Updates
+- [ ] Implement Admin Panel for Content Management
+- [ ] Add Back to Top Links
+- [ ] Provide Additional Templates with Examples
+## Contact
+
+Jude Nicholas Atienza - nicoatienza72@gmail.com
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
