@@ -14,6 +14,22 @@ export const getAllFlashcards = async (req, res) => {
     }
 };
 
+export const getFlashcardsById = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const flashcard = await sql`SELECT * FROM flashcards WHERE id = ${id}`;
+
+        if (flashcard.length === 0) {
+            return res.status(404).json({ success: false, message: "Flashcard not found" });
+        }
+
+        res.status(200).json({ success: true, data: flashcard[0] });
+    } catch (error) {
+        console.error("Error fetching flashcard:", error);
+        res.status(500).json({ success:false, error: "Internal server error" });
+    }
+}
 
 export const createFlashcards = async (req, res) => {
     const { question, answer } = req.body;

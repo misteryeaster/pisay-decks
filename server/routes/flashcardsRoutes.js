@@ -1,10 +1,10 @@
 import express from 'express';
-import { getAllFlashcards, createFlashcards, updateFlashcards, deleteFlashcards } from '../controllers/flashcardsController.js';
+import { getAllFlashcards, createFlashcards, updateFlashcards, deleteFlashcards, getFlashcardsById } from '../controllers/flashcardsController.js';
 
 const router = express.Router();
 
 router.get('/', getAllFlashcards);
-router.get('/:id', getAllFlashcards);
+router.get('/:id', getFlashcardsById);
 router.post('/', createFlashcards);
 router.put('/:id', updateFlashcards);
 router.delete('/:id', deleteFlashcards);
