@@ -5,6 +5,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 
 import flashcardsRoutes from './routes/flashcardsRoutes.js';
+import deckRoutes from './routes/deckRoutes.js';
+
 import { sql } from './config/db.js';
 import { aj } from './lib/arcjet.js';
 
@@ -46,6 +48,7 @@ app.use(async (req, res, next) => {
 })
 
 app.use("/api/flashcards", flashcardsRoutes);
+app.use("/api/decks", deckRoutes);
 
 async function initDB() {
     try {
@@ -53,6 +56,14 @@ async function initDB() {
             id SERIAL PRIMARY KEY,
             question TEXT NOT NULL,
             answer TEXT NOT NULL,
+            created_at TIMESTAMPTZ DEFAULT NOW(),
+            updated_at TIMESTAMPTZ DEFAULT NOW()
+        )`;
+
+        await sql`CREATE TABLE IF NOT EXISTS decks(
+            id SERIAL PRIMARY KEY,
+            name TEXT NOT NULL,
+            description TEXT,
             created_at TIMESTAMPTZ DEFAULT NOW(),
             updated_at TIMESTAMPTZ DEFAULT NOW()
         )`;

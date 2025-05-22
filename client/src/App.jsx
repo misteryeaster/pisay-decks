@@ -11,7 +11,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/decks/:deckId" element={<DeckPage />} />
+        <Route path="/decks" element={<DeckPage />} />
       </Routes>
     </div>
   )
