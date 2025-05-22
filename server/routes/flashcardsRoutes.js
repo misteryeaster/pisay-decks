@@ -3,14 +3,10 @@ import { getAllFlashcards, createFlashcards, updateFlashcards, deleteFlashcards,
 
 const router = express.Router();
 
-router.get('/', getAllFlashcards);
-router.get('/:id', getFlashcardsById);
-router.post('/', createFlashcards);
-router.put('/:id', updateFlashcards);
-router.delete('/:id', deleteFlashcards);
-
-// router.get('/:deckId', getAllFlashcards);
-// router.get('/:deckId/:id', getAllFlashcards);
-
+router.get('/:deckId', getAllFlashcards);
+router.get('/:deckId/:id', getFlashcardsById);  
+router.post('/:deckId', createFlashcards);
+router.put('/:deckId/:id', updateFlashcards);
+router.delete('/:deckId/:id', deleteFlashcards);
 
 export default router;
