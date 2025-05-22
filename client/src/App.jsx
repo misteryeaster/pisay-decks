@@ -1,13 +1,19 @@
 import { Button } from "./components/ui/button"
+import Navbar from "./components/ui/Navbar"
+import DeckPage from "./pages/DeckPage"
+import HomePage from "./pages/HomePage"
 
+import { Routes, Route } from "react-router-dom"
 
 function App() {
   return (
-    <Button variant="outline" className="flex items-center">
-      <a href="https://www.youtube.com/@TheCodingTrain" target="_blank" rel="noopener noreferrer">
-      Youtube
-      </a>
-    </Button>
+    <div className="min-h-screen bg-base-200 transition-colors duration-200">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/decks/:deckId" element={<DeckPage />} />
+      </Routes>
+    </div>
   )
 }
 
