@@ -52,18 +52,27 @@ app.use("/api/decks", deckRoutes);
 
 async function initDB() {
     try {
-        await sql`CREATE TABLE IF NOT EXISTS flashcards(
+        // initialize subjects table
+        await sql`CREATE TABLE IF NOT EXISTS subjects (
+            name TEXT PRIMARY KEY NOT NULL 
+        )`;
+
+        await sql`CREATE TABLE IF NOT EXISTS decks (
             id SERIAL PRIMARY KEY,
-            question TEXT NOT NULL,
-            answer TEXT NOT NULL,
+            name TEXT NOT NULL,
+            description TEXT,
+            subject_name TEXT NOT NULL REFERENCES subjects(name) ON DELETE CASCADE,
+            user_id TEXT NOT NULL,
+            grade_level int NOT NULL,
             created_at TIMESTAMPTZ DEFAULT NOW(),
             updated_at TIMESTAMPTZ DEFAULT NOW()
         )`;
 
-        await sql`CREATE TABLE IF NOT EXISTS decks(
+        await sql`CREATE TABLE IF NOT EXISTS flashcards (
             id SERIAL PRIMARY KEY,
-            name TEXT NOT NULL,
-            description TEXT,
+            question TEXT NOT NULL,
+            answer TEXT NOT NULL,
+            deck_id SERIAL NOT NULL REFERENCES decks (id) ON DELETE CASCADE,
             created_at TIMESTAMPTZ DEFAULT NOW(),
             updated_at TIMESTAMPTZ DEFAULT NOW()
         )`;
