@@ -52,7 +52,16 @@ app.use("/api/decks", deckRoutes);
 
 async function initDB() {
     try {
-        // initialize subjects table
+        await sql`CREATE TABLE IF NOT EXISTS users (
+            id SERIAL PRIMARY KEY,             
+            email TEXT UNIQUE NOT NULL,
+            first_name TEXT NOT NULL,
+            last_name TEXT NOT NULL,
+            nickname TEXT,
+            created_at TIMESTAMPTZ DEFAULT NOW(),
+            updated_at TIMESTAMPTZ DEFAULT NOW()
+        )`;
+
         await sql`CREATE TABLE IF NOT EXISTS subjects (
             name TEXT PRIMARY KEY NOT NULL 
         )`;
@@ -76,6 +85,8 @@ async function initDB() {
             created_at TIMESTAMPTZ DEFAULT NOW(),
             updated_at TIMESTAMPTZ DEFAULT NOW()
         )`;
+
+        
 
         console.log('Database initialized successfully');
     } catch (error) {
