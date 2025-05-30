@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
+import subjectsRoutes from './routes/subjectsRoutes.js';
 import flashcardsRoutes from './routes/flashcardsRoutes.js';
 import deckRoutes from './routes/deckRoutes.js';
 
@@ -47,8 +48,9 @@ app.use(async (req, res, next) => {
     }
 })
 
+app.use("/api/subjects", subjectsRoutes);
+app.use("/api/subjects/:subjectId/decks", deckRoutes);
 app.use("/api/flashcards", flashcardsRoutes);
-app.use("/api/decks", deckRoutes);
 
 async function initDB() {
     try {
@@ -71,7 +73,7 @@ async function initDB() {
             name TEXT NOT NULL,
             description TEXT,
             subject_name TEXT NOT NULL REFERENCES subjects(name) ON DELETE CASCADE,
-            user_id TEXT NOT NULL,
+            user_id SERIAL NOT NULL REFERENCES users(id) ON DELETE CASCADE,
             grade_level int NOT NULL,
             created_at TIMESTAMPTZ DEFAULT NOW(),
             updated_at TIMESTAMPTZ DEFAULT NOW()
