@@ -2,6 +2,7 @@ import { Button } from "./components/ui/button"
 import Navbar from "./components/ui/Navbar"
 import DeckPage from "./pages/DeckPage"
 import HomePage from "./pages/HomePage"
+import SubjectsPage from "./pages/SubjectsPage"
 
 import { Routes, Route } from "react-router-dom"
 
@@ -11,7 +12,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/decks" element={<DeckPage />} />
+        <Route path="/subjects/:subjectId/decks" element={<DeckPage />} />
+        <Route path="/subjects" element={<SubjectsPage />} />
       </Routes>
     </div>
   )
