@@ -49,7 +49,7 @@ app.use(async (req, res, next) => {
 })
 
 app.use("/api/subjects", subjectsRoutes);
-app.use("/api/subjects/:subjectId/decks", deckRoutes);
+app.use("/api/decks", deckRoutes);
 app.use("/api/flashcards", flashcardsRoutes);
 
 async function initDB() {

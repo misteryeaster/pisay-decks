@@ -4,7 +4,7 @@ import { getAllDecks, getDeckById, createDeck, updateDeck, deleteDeck } from "..
 const router = express.Router();
 
 // Route to get all decks
-router.get("/", getAllDecks);
+router.get("/:subjectName/", getAllDecks);
 // Route to get a specific deck by ID
 router.get("/:id", getDeckById);
 // Route to create a new deck

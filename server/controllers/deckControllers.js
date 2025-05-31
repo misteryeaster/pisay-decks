@@ -1,8 +1,11 @@
 import { sql } from '../config/db.js';
 
 export const getAllDecks = async (req, res) => {
+    const { subjectName } = req.params;
     try {
-        const decks = await sql`SELECT * FROM decks ORDER BY created_at DESC`;
+        // Fetch all decks for a specific subject
+        const decks = await sql`SELECT * FROM decks WHERE subject_name = ${subjectName} ORDER BY created_at DESC`;
+        // const decks = await sql`SELECT * FROM decks ORDER BY created_at DESC`;
         res.status(200).json({ success: true, data: decks });
     } catch (error) {
         console.error("Error fetching decks:", error);
