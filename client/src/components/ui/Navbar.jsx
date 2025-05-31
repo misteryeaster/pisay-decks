@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 
 const Navbar = () => {
   const { pathname } = useLocation();
@@ -31,9 +32,13 @@ const Navbar = () => {
           ))}
           <li>            
             <Link to="/profile">
-              <div class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
-                  <span class="font-medium text-gray-600 dark:text-gray-300">JL</span>
-              </div>
+
+              <Avatar className="rounded-full w-10 h-10">
+                <AvatarImage src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/340px-Default_pfp.svg.png"/>
+                <AvatarFallback className="text-xs font-medium">
+                  {/* FIRST AND THIRD LETTER OF THE EMAIL */}
+                </AvatarFallback>
+              </Avatar>
             </Link>
           </li>
         </ul>
