@@ -11,7 +11,7 @@ export default function HomePage() {
       
       <div className="flex space-x-4">
         <Button className="bg-slate-950 text-white px-6 py-2 rounded-xl shadow hover:bg-slate-800 transition">
-          <Link to="/decks" className="text-white">
+          <Link to="/subjects" className="text-white">
             Browse Subjects
           </Link>
         </Button>

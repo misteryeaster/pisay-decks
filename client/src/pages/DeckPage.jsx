@@ -1,12 +1,16 @@
 import { useEffect } from 'react'
 import { useDecksStore } from '../../store/useDecksStore'
+import { useParams } from 'react-router-dom'
 
 function DeckPage() {
   const { decks, loading, error, fetchDecks } = useDecksStore()
+  const { subjectName } = useParams()
 
   useEffect(() => {
-    fetchDecks()
-  }, [fetchDecks])
+    if (subjectName) {
+      fetchDecks(subjectName)
+    }
+  }, [fetchDecks, subjectName])
 
   console.log(decks)
 

@@ -8,10 +8,10 @@ export const useDecksStore = create((set, get) => ({
     loading: false,
     error: null,
 
-    fetchDecks: async () => {
+    fetchDecks: async (subjectName) => {
         set({ loading: true });
         try {
-            const response = await axios.get(`${BASE_URL}/api/subjects/:subjectId/decks`);
+            const response = await axios.get(`${BASE_URL}/api/decks/${subjectName}`);
             set({ decks: response.data.data, error: null });
         } catch (error) {
             if(error.status === 429) {
